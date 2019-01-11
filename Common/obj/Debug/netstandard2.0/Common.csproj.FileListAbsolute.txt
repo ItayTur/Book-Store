@@ -1,0 +1,9 @@
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\bin\Debug\netstandard2.0\Common.deps.json
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\bin\Debug\netstandard2.0\Common.dll
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\bin\Debug\netstandard2.0\Common.pdb
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\obj\Debug\netstandard2.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\obj\Debug\netstandard2.0\Common.AssemblyInfoInputs.cache
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\obj\Debug\netstandard2.0\Common.AssemblyInfo.cs
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\obj\Debug\netstandard2.0\Common.dll
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\obj\Debug\netstandard2.0\Common.pdb
+C:\Users\Naum\Desktop\Home Work\LibraryProject\Common\obj\Debug\netstandard2.0\Common.csprojAssemblyReference.cache

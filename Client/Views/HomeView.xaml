@@ -1,0 +1,125 @@
+﻿<Page
+    x:Class="Client.Views.HomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:Common.Models" 
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Orientation="Vertical">
+            <TextBlock Text="Books" FontSize="36"/>
+            <ListBox x:Name="listBooks" ItemsSource="{x:Bind HomeViewModel.Books}" SelectedItem="{x:Bind HomeViewModel.Book, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="model:BookModel">
+                        <StackPanel Spacing="5" Orientation="Horizontal" >
+                            <TextBlock Text="Name:"/>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Edition:"/>
+                            <TextBlock Text="{Binding Edition}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Author:"/>
+                            <TextBlock Text="{Binding Author}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Publisher:"/>
+                            <TextBlock Text="{Binding Publisher}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Amount:"/>
+                            <TextBlock Text="{Binding Amount}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Category"/>
+                            <TextBlock Text="{Binding Category}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Price:"/>
+                            <TextBlock Text="{Binding Price}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Discount:"/>
+                            <TextBlock Text="{Binding DiscountPercentage}"/>
+                            <TextBlock Text="%"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <TextBlock Text="Journals" FontSize="36"/>
+            <ListBox  x:Name="listJournals" ItemsSource="{x:Bind HomeViewModel.Journals, Mode=TwoWay}" SelectedItem="{x:Bind HomeViewModel.Journal, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="model:JournalModel">
+                        <StackPanel Spacing="5" Orientation="Horizontal">
+                            <TextBlock Text="Name:"/>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Issue:"/>
+                            <TextBlock Text="{Binding Issue}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Writer:"/>
+                            <TextBlock Text="{Binding Writer}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Publisher:"/>
+                            <TextBlock Text="{Binding Publisher}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Amount:"/>
+                            <TextBlock Text="{Binding Amount}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Category:"/>
+                            <TextBlock Text="{Binding Category}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Price:"/>
+                            <TextBlock Text="{Binding Price}"/>
+                            <TextBlock Text="||"/>
+                            <TextBlock Text="Discount:"/>
+                            <TextBlock Text="{Binding DiscountPercentage}"/>
+                            <TextBlock Text="%"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Spacing="30" Grid.Column="0" Grid.Row="0">
+            <TextBlock Text="{x:Bind HomeViewModel.Message, Mode=TwoWay}" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" Text="User email:"/>
+            <TextBox Text="{x:Bind HomeViewModel.UserEmail, Mode=TwoWay}"/>
+            <Button HorizontalAlignment="Center" Click="{x:Bind HomeViewModel.ConnectCustomer}" Content="Connect"/>
+        </StackPanel>
+        <StackPanel Spacing="30" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"> 
+            <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Seller:"/>
+                <TextBlock Text="{x:Bind HomeViewModel.SellerName}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Buyier:"/>
+                <TextBlock Text="{x:Bind HomeViewModel.BuyierName, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Book name:"/>
+                <TextBlock Text="{x:Bind HomeViewModel.BookName, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Total price:"/>
+                <TextBlock Text="{x:Bind HomeViewModel.TotalePrice, Mode=TwoWay}"/>
+            </StackPanel>
+            <Button IsEnabled="{x:Bind HomeViewModel.IsBuyable,Mode=OneWay}" HorizontalAlignment="Center" Click="{x:Bind HomeViewModel.Buy}" Content="Buy"/>
+        </StackPanel>
+        <StackPanel Spacing="50" Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button IsEnabled="{x:Bind HomeViewModel.IsRemoveEnabled, Mode=OneWay}" Click="{x:Bind HomeViewModel.RemoveBook}" Content="Remove Book"/>
+            <Button Click="{x:Bind HomeViewModel.OpenAddBookView}" Content="New book"/>
+            <Button Content="Sign Out" Click="{x:Bind HomeViewModel.OpenLoginView}"/>
+        </StackPanel>
+    </Grid>
+</Page>

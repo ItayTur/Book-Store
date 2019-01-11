@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="Client.Views.AddBookView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:converter="using:Client.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <converter:BoolToVisibilityConverter x:Key="boolToVisibale"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Center"  Text="Book Form" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,64,0,0"/>
+        <StackPanel Grid.Column="0" Grid.Row="1" Spacing="30" HorizontalAlignment="Center">
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock Text="Name:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Name, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock Text="Publisher:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Publisher, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock Text="Publish Date:"/>
+                <DatePicker Date="{x:Bind AddBookViewModel.PublishDate, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock Text="Price:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Price, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock Text="Amount:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Amount, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock Text="Category:"/>
+                <ComboBox ItemsSource="{x:Bind AddBookViewModel.Categories}" SelectedItem="{x:Bind AddBookViewModel.Category, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock Text="Discount:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.DiscountPercentage, Mode=TwoWay}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <StackPanel Spacing="10" Orientation="Horizontal" >
+                <RadioButton  IsChecked="{x:Bind AddBookViewModel.IsJournal, Mode=TwoWay}" Content="Journal"/>
+                <RadioButton  IsChecked="{x:Bind AddBookViewModel.IsBook, Mode=TwoWay}" Content="Book"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Visibility="{x:Bind AddBookViewModel.IsBook, Converter={StaticResource boolToVisibale}, Mode=TwoWay}" x:Name="BookForm" Spacing="100" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="Author:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Author, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="Edition:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Edition, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="Summery:"/>
+                <TextBox TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{x:Bind AddBookViewModel.Summery, Mode=TwoWay}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Visibility="{x:Bind AddBookViewModel.IsJournal, Converter={StaticResource boolToVisibale}, Mode=TwoWay}" x:Name="JournalForm" Spacing="100" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="Issue:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Issue, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="Writer:"/>
+                <TextBox Text="{x:Bind AddBookViewModel.Writer, Mode=TwoWay}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="0,0,0,30" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="ButtonsSp" Orientation="Horizontal" Spacing="50">
+            <Button Click="{x:Bind AddBookViewModel.AddBook}" Content="Submit"/>
+            <TextBlock Text="{x:Bind AddBookViewModel.Message, Mode=TwoWay}"/>
+            <Button Click="{x:Bind AddBookViewModel.GoBack}" Content="Go Back"/>
+        </StackPanel>
+    </Grid>
+</Page>

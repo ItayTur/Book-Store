@@ -15,7 +15,7 @@ visual studio 2017, SQL Server
 
 ## Authors
 
-* **Itay Tur** - *Full Stack* - [Itay Tur](https://github.com/ItayTur)
+* **Itay Tur** - *Full Stack* 
 
 ## Acknowledgments
 
